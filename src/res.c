@@ -76,7 +76,7 @@ extern SDL_Color WHITE;
 extern SDL_Renderer* renderer;
 extern Weapon weapons[WEAPONS_SIZE];
 
-SDL_DisplayMode DM;
+extern SDL_DisplayMode DM;
 SDL_Window* window;
 SDL_Texture* originTextures[TILESET_SIZE];
 TTF_Font* font;

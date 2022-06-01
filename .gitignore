@@ -8,3 +8,6 @@ dungeon_rush
 *.o
 *.gch
 build
+DungeonRush/dungeonrush/dungeon_rush
+DungeonRush/dungeonrush/res
+DungeonRush.zip

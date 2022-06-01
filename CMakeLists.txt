@@ -1,9 +1,9 @@
 set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_PROCESSOR arm)
-set(TOOLCHAIN_PATH /data/home/luali/host)
-set(tools /data/home/luali/host)
-set(CMAKE_C_COMPILER ${tools}/bin/arm-linux-gcc)
-set(CMAKE_CXX_COMPILER ${tools}/bin/arm-linux-g++)
+set(TOOLCHAIN_PATH /media/luali/9c8f92d0-89e4-41df-b271-2fad4d86cc01/distribution/build.JELOS-RG552.aarch64/toolchain/)
+set(tools /media/luali/9c8f92d0-89e4-41df-b271-2fad4d86cc01/distribution/build.JELOS-RG552.aarch64/toolchain/)
+set(CMAKE_C_COMPILER ${tools}/bin/aarch64-libreelec-linux-gnueabi-gcc)
+set(CMAKE_CXX_COMPILER ${tools}/bin/aarch64-libreelec-linux-gnueabi-g++)
 execute_process(COMMAND ${CMAKE_C_COMPILER} -print-sysroot OUTPUT_VARIABLE ARM_SYSROOT_PATH OUTPUT_STRIP_TRAILING_WHITESPACE)
 
 set(CMAKE_FIND_ROOT_PATH "${ARM_SYSROOT_PATH}")
