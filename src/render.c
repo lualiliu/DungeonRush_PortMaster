@@ -36,6 +36,9 @@ unsigned long long renderFrames;
 
 LinkList animationsList[ANIMATION_LINK_LIST_NUM];
 Animation* countDownBar;
+
+SDL_DisplayMode DM;
+
 void blacken(int duration) {
   SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
   SDL_Rect rect = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
@@ -68,6 +71,8 @@ void initInfo() {
   if (!taskText) taskText = createText("placeholder", WHITE);
 }
 void initRenderer() {
+  
+SDL_GetCurrentDisplayMode(0, &DM);
   renderFrames = 0;
   for (int i = 0; i < ANIMATION_LINK_LIST_NUM; i++) {
     initLinkList(&animationsList[i]);
@@ -408,12 +413,15 @@ void render() {
   renderInfo();
   renderId();
   // Update Screen
+  SDL_RenderSetScale(renderer,(float)DM.w/SCREEN_WIDTH,(float)DM.h/SCREEN_HEIGHT);
   SDL_RenderPresent(renderer);
+  
   renderFrames++;
 }
 void renderUi() {
   SDL_SetRenderDrawColor(renderer, RENDER_BG_COLOR, 255);
   SDL_RenderClear(renderer);
+  SDL_RenderSetScale(renderer,(float)DM.w/SCREEN_WIDTH,(float)DM.h/SCREEN_HEIGHT);
 
   for (int i = 0; i < ANIMATION_LINK_LIST_NUM; i++) {
     updateAnimationLinkList(&animationsList[i]);

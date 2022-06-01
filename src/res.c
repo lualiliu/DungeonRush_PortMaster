@@ -76,6 +76,7 @@ extern SDL_Color WHITE;
 extern SDL_Renderer* renderer;
 extern Weapon weapons[WEAPONS_SIZE];
 
+SDL_DisplayMode DM;
 SDL_Window* window;
 SDL_Texture* originTextures[TILESET_SIZE];
 TTF_Font* font;
@@ -92,7 +93,8 @@ Mix_Chunk *sounds[AUDIO_SOUND_SIZE];
 bool init() {
   // Initialization flag
   bool success = true;
-
+  
+  SDL_GetCurrentDisplayMode(0, &DM);
   // Initialize SDL
   if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
     printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
@@ -100,8 +102,8 @@ bool init() {
   } else {
     // Create window
     window = SDL_CreateWindow("Dungeon Rush "VERSION_STRING, SDL_WINDOWPOS_UNDEFINED,
-                              SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH,
-                              SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+                              SDL_WINDOWPOS_UNDEFINED, 1920,
+                              1080, SDL_WINDOW_OPENGL);
     if (window == NULL) {
       printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
       success = false;

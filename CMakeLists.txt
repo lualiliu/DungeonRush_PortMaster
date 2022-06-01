@@ -1,3 +1,13 @@
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_PROCESSOR arm)
+set(TOOLCHAIN_PATH /data/home/luali/host)
+set(tools /data/home/luali/host)
+set(CMAKE_C_COMPILER ${tools}/bin/arm-linux-gcc)
+set(CMAKE_CXX_COMPILER ${tools}/bin/arm-linux-g++)
+execute_process(COMMAND ${CMAKE_C_COMPILER} -print-sysroot OUTPUT_VARIABLE ARM_SYSROOT_PATH OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+set(CMAKE_FIND_ROOT_PATH "${ARM_SYSROOT_PATH}")
+
 cmake_minimum_required(VERSION 3.5.1)
 project(DungeonRush VERSION 0.1.0
                     DESCRIPTION "A game inspired by snake"
